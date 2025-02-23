@@ -92,7 +92,7 @@ rm -rf /home/$USER/Music
 print "Setting up zsh"
 sudo chsh --shell /bin/zsh $USER
 sudo chsh --shell /bin/zsh
-git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
+sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
 sudo cp ../misc/zshrc.sh /home/$USER/.zshrc
 sudo cp ../misc/zsh_aliases.sh /home/$USER/.zsh_aliases
 
@@ -129,4 +129,4 @@ git config --global user.name "bradmanfordson"
 git config --global user.email $email
 ssh-keygen -q -t ed25519 -N "" -C "$email" -f /home/$USER/.ssh/github_keys
 eval "$(ssh-agent -s)"
-ssh-add /home/$USER/.ssh/github_keys
+ssh-add /home/$USER/.ssh/github_keysls
