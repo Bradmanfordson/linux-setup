@@ -110,18 +110,25 @@ sudo chmod +x /usr/local/sbin/venvy
 
 # Setup user environment
 # ======================
-print  "Set to dark theme + set background"
+print  "Set to dark theme + set background + dock"
 cp ../misc/dark_debian.png ~/Pictures/
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-gsettings set org.gnome.desktop.background picture-uri file:////home/$USER/Pictures/dark_debian.png
+gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-olive-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.background picture-uri file:///home/$USER/Pictures/dark_debian.png
+gsettings set org.gnome.desktop.background picture-uri-dark file:///home/$USER/Pictures/dark_debian.png
 gsettings set org.gnome.login-screen logo /home/$USER/Pictures/dark_debian.png
 gsettings set org.gnome.desktop.session idle-delay 0
-
-print "Setup dock"
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'code_code.desktop']"
+gsettings set org.gnome.desktop.interface show-battery-percentage true
+gsettings set org.gnome.desktop.default-applications.terminal exec 'ghostty'
+gsettings set org.gnome.shell.extensions.ding show-home false
+gsettings set org.gnome.desktop.interface clock-format '12h'
+gsettings set org.gnome.shell favorite-apps "['com.mitchellh.ghostty.desktop', 'org.gnome.Nautilus.desktop', 'google-chrome.desktop']"
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 16
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide-in-fullscreen true
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
 
 # Setup GitHub Shit
 # =================
@@ -129,4 +136,4 @@ git config --global user.name "bradmanfordson"
 git config --global user.email $email
 ssh-keygen -q -t ed25519 -N "" -C "$email" -f /home/$USER/.ssh/github_keys
 eval "$(ssh-agent -s)"
-ssh-add /home/$USER/.ssh/github_keysls
+ssh-add /home/$USER/.ssh/github_keys
