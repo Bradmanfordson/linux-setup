@@ -108,6 +108,12 @@ print "Adding venvy"
 sudo cp ../misc/venvy.sh /usr/local/sbin/venvy
 sudo chmod +x /usr/local/sbin/venvy
 
+# Misc dotfiles
+# =============
+print "Adding dotfiles"
+cp ../misc/vimrc /home/$USER/.vimrc
+cp ../misc/zellij_config.kdl /home/$USER/.config/zellij/config.kdl
+
 # Setup user environment
 # ======================
 print  "Set to dark theme + set background + dock"
